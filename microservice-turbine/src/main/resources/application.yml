@@ -1,0 +1,19 @@
+server:
+  port: 9991
+#  context-path: /turbine
+management:
+  port: 9999
+spring:
+  application:
+    name: microservice-turbine
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+turbine:
+  appConfig: microservice-consumer,microservice-gateway
+  clusterNameExpression: "'default'"
+  combine-host-port: true

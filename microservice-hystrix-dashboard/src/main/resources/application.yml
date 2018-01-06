@@ -1,0 +1,13 @@
+server:
+  port: 9990
+#  context-path: /dashboard
+spring:
+  application:
+    name: microservice-hystrix-dashboard
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
