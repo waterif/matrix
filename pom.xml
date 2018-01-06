@@ -16,5 +16,6 @@
     <module>microservice-gateway</module>
     <module>microservice-hystrix-dashboard</module>
     <module>microservice-turbine</module>
+    <module>microservice-config</module>
   </modules>
 </project>

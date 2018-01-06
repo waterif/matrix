@@ -4,6 +4,14 @@ server:
 spring:
   application:
     name: microservice-provider
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: microservice-config-server
+      #uri: http://localhost:8888/
+      profile: dev
+      label: master
   jpa:
     generate-ddl: false
     show-sql: true

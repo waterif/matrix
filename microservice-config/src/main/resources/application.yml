@@ -1,0 +1,26 @@
+server:
+  port: 8888
+#  context-path: /config-server
+spring:
+  application:
+    name: microservice-config-server
+  profiles:
+    active:
+    - dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/waterif/matrix-config
+          username: 
+          password: 
+          default-label: master
+          timeout: 10
+        default-label: master
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
