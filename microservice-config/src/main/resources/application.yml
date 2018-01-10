@@ -30,6 +30,6 @@ encrypt:
   #key: matrix  # 对称秘钥配置
   key-store:   # 非对称秘钥配置
     location: classpath:/server.jks
-    alias: matrix   
+    alias: matrix
     password: matrix
     secret: matrix

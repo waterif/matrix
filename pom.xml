@@ -12,7 +12,9 @@
   <modules>
     <module>microservice-discovery-eureka</module>
     <module>microservice-provider</module>
+    <module>microservice-provider-rabbitmq</module>
     <module>microservice-consumer</module>
+    <module>microservice-consumer-rabbitmq</module>
     <module>microservice-gateway</module>
     <module>microservice-hystrix-dashboard</module>
     <module>microservice-turbine</module>

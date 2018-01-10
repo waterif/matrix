@@ -6,6 +6,7 @@ spring:
     name: microservice-provider
   cloud:
     config:
+      fail-fast: true
       discovery:
         enabled: true
         service-id: microservice-config-server
