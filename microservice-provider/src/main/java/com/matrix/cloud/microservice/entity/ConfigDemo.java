@@ -12,6 +12,9 @@ public class ConfigDemo
     @Value( "${errorDesc}" )
     private String errorDesc;
 
+    @Value( "${password}" )
+    private String password;
+
     public String getErrorCode()
     {
         return errorCode;
@@ -30,6 +33,16 @@ public class ConfigDemo
     public void setErrorDesc( String errorDesc )
     {
         this.errorDesc = errorDesc;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword( String password )
+    {
+        this.password = password;
     }
 
 }
