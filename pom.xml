@@ -21,5 +21,6 @@
     <module>microservice-hystrix-dashboard</module>
     <module>microservice-turbine</module>
     <module>microservice-config</module>
+    <module>microservice-zipkin-dashboard</module>
   </modules>
 </project>

@@ -4,6 +4,22 @@ server:
 spring:
   application:
     name: microservice-gateway
+    
+  zipkin:
+    enabled: true
+    flush-interval: 1
+    compression:
+      enabled: true
+    base-url: http://192.168.23.164:9992   #http://microservice-zipkin-dashboard/
+    service:
+      name: ${spring.application.name}
+  sleuth:
+    enabled: true
+    async:
+      enabled: true
+    sampler:
+      percentage: 1 #  默认值为0.1f，现在为了测试设置100%采集
+      
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
