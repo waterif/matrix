@@ -1,23 +1,28 @@
 server:
   port: 8080
-#  context-path: /provider-rabbitmq
+#  context-path: /consumer-kafka
 spring:
   application:
-    name: microservice-provider-rabbitmq
-  rabbitmq:
-    host: 192.168.35.153
-    port: 5672
-    username: admin
-    password: 12345678
+    name: microservice-consumer-kafka
   cloud:
     stream:
       default-binder: matrix
       bindings:
         matrix:
+          binder: matrix
           destination: dest1
+          group: group1
+          consumer:
+            instance-count: 1
+            partitioned: true
+            concurrency: 0
+          content-type: text/plain
       binders:
         matrix: 
-          type: rabbit
+          type: kafka
+          environment:
+            spring.cloud.stream.kafka.binder.brokers: 192.168.35.153:5672
+            spring.cloud.stream.kafka.binder.zk-nodes: 192.168.35.153:2181
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
