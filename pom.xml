@@ -10,6 +10,7 @@
 
 
   <modules>
+    <module>matrix-common</module>
     <module>microservice-discovery-eureka</module>
     <module>microservice-provider</module>
     <module>microservice-provider-rabbitmq</module>
