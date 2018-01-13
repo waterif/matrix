@@ -38,3 +38,7 @@ eureka:
 feign:
   hystrix:
     enabled: true
+endpoints:
+  shutdown:
+    enabled: true # 启用shutdown
+    sensitive: false # 禁用密码验证

@@ -65,12 +65,18 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-zipkin</artifactId>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>com.matrix.platform</groupId>
 			<artifactId>matrix-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.39</version>
 		</dependency>
 
 		<dependency>
