@@ -27,11 +27,12 @@ public class UserController
     @GetMapping( value = "/{id}", produces = { "application/json; charset=UTF-8" } )
     public User findById( @PathVariable( "id" ) Long id )
     {
-        logger.info( "start findById. /user/{}", id );
+        logger.debug( "debug--> start findById. /user/{}", id );
+        logger.info( "info--> start findById. /user/{}", id );
         
         User findOne = userRepository.findOne( id );
         
-        logger.info( "end findById. /user/{}", id );
+        logger.info( "info--> end findById. /user/{}", id );
         
         return findOne;
     }

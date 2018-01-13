@@ -26,14 +26,14 @@
 			</timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 		<encoder>
-			<pattern>[host:%X{req.remoteHost}][%d{yyyy-MM-dd HH:mm:ss.SSS}][%X{req.requestId}][%thread][%-5level][%logger{36}] - %msg%n</pattern>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%contextName] [%X{req.requestId}] [%thread] [%-5level] [%logger{36}] - %msg%n</pattern>
 		</encoder>
 	</appender>
 
 	<appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
 		<syslogHost>localhost</syslogHost>
 		<facility>local6</facility>
-		<suffixPattern>[host:%X{req.remoteHost}][%d{yyyy-MM-dd HH:mm:ss.SSS}][%X{req.requestId}][%thread][%-5level][%logger{36}] - %msg%n</suffixPattern>
+		<suffixPattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%contextName] [%X{req.requestId}] [%thread] [%-5level] [%logger{36}] - %msg%n</suffixPattern>
 	</appender>
 
 	<!-- 记录error日志 -->
@@ -54,7 +54,7 @@
 			</timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 		<encoder>
-			<pattern>[host:%X{req.remoteHost}][%d{yyyy-MM-dd HH:mm:ss.SSS}][%X{req.requestId}][%thread][%-5level][%logger{36}] - %msg%n</pattern>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%contextName] [%X{req.requestId}] [%thread] [%-5level] [%logger{36}] - %msg%n</pattern>
 		</encoder>
 	</appender>
 
@@ -71,17 +71,18 @@
 	<logger name="java.sql.ResultSet" level="ERROR" />
 	<logger name="com.alibaba.druid.sql" level="ERROR" />
 
-<!--
-	<springProfile name="test">
-		<logger name="com.quanshi.matrix" level="debug" />
-	</springProfile> -->
+	<!--测试环境 -->
+	<springProfile name="dev,test">
+		<logger name="com.matrix" level="debug" />
+	</springProfile> 
+	
 	<!-- 生产环境. -->
-	<!--<springProfile name="prod">
-		<logger name="com.quanshi.matrix" level="info" />
-	</springProfile> -->
+	<springProfile name="prod">
+		<logger name="com.matrix" level="info" />
+	</springProfile>
 
-	<!-- project default level -->
-	<logger name="com.matrix" level="info" /> 
+	<!-- project default level 
+	<logger name="com.matrix" level="info" /> -->
 	
 	<root level="INFO">
 		<appender-ref ref="console" level="INFO" />

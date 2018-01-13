@@ -11,7 +11,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableCircuitBreaker
-@ServletComponentScan
+@ServletComponentScan( basePackages = { "com.matrix.cloud.common.filter" } )
 public class MicroserviceConsumerApplication
 {
 

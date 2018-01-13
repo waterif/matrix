@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: microservice-consumer
+  profiles:
+    active:
+    - dev
     
   zipkin:
     locator:
@@ -13,7 +16,7 @@ spring:
     flush-interval: 1
     compression:
       enabled: true
-    base-url: http://192.168.23.164:9992   #http://microservice-zipkin-dashboard/
+    base-url: http://localhost:9992   #http://microservice-zipkin-dashboard/
     service:
       name: ${spring.application.name}
   sleuth:

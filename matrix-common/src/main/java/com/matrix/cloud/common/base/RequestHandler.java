@@ -16,16 +16,16 @@ public class RequestHandler
 
         String requestId = null;
 
-        if ( context.containsKey( Constants.REQUESTID ) )
+        if ( context.containsKey( Constants.REQUEST_ID ) )
         {
-            requestId = String.valueOf( context.get( Constants.REQUESTID ) );
+            requestId = String.valueOf( context.get( Constants.REQUEST_ID ) );
         }
 
         if ( StringUtils.isEmpty( requestId ) )
         {
 
             requestId = UUID.randomUUID().toString();
-            context.put( Constants.REQUESTID, requestId );
+            context.put( Constants.REQUEST_ID, requestId );
         }
 
         return requestId;
