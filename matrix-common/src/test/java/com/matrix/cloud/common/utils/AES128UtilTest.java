@@ -9,6 +9,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**   
+* @Description: TODO(这里用一句话描述这个类的作用)  
+* 
+* @author matrix 
+* @date 2018年1月14日  下午4:11:56
+*
+* @Copyright: 2018 www.matrix.com Inc. All rights reserved. 
+*/  
 public class AES128UtilTest
 {
 

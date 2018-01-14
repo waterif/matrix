@@ -3,6 +3,14 @@ package com.matrix.cloud.common.base;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**   
+* @Description: TODO(这里用一句话描述这个类的作用)  
+* 
+* @author matrix 
+* @date 2018年1月14日  下午12:47:44
+*
+* @Copyright: 2018 www.matrix.com Inc. All rights reserved. 
+*/  
 @SuppressWarnings( "serial" )
 public class BaseException extends RuntimeException
 {
@@ -12,7 +20,7 @@ public class BaseException extends RuntimeException
     private int errorCode;
 
     /**
-     * @roseuid 45F7E8670109
+     * 构造方法
      */
     public BaseException()
     {
@@ -20,8 +28,8 @@ public class BaseException extends RuntimeException
     }
 
     /**
-     * @param errorMsg
-     * @roseuid 45F7E8F302BF
+     * 构造方法 BaseException
+     * @param errorMsg 异常描述
      */
     public BaseException( String errorMsg )
     {

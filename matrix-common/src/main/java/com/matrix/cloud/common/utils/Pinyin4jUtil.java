@@ -11,6 +11,14 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
+/**   
+* @Description: TODO(这里用一句话描述这个类的作用)  
+* 
+* @author matrix 
+* @date 2018年1月14日  下午4:11:26
+*
+* @Copyright: 2018 www.matrix.com Inc. All rights reserved. 
+*/  
 public class Pinyin4jUtil
 {
     /**
@@ -160,7 +168,8 @@ public class Pinyin4jUtil
      */
     private static String parseTheChineseByObject( List<Map<String, Integer>> list )
     {
-        Map<String, Integer> first = null; // 用于统计每一次,集合组合数据
+        // 用于统计每一次,集合组合数据
+        Map<String, Integer> first = null; 
         // 遍历每一组集合
         for ( int i = 0; i < list.size(); i++ )
         {

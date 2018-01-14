@@ -32,7 +32,8 @@ public class ConsumerControllerTest
     {
     }
 
-    private MockMvc mockMvc; // 模拟MVC对象，通过MockMvcBuilders.webAppContextSetup(this.wac).build()初始化。
+    // 模拟MVC对象，通过MockMvcBuilders.webAppContextSetup(this.wac).build()初始化。
+    private MockMvc mockMvc; 
 
     @Autowired
     private WebApplicationContext wac; // 注入WebApplicationContext

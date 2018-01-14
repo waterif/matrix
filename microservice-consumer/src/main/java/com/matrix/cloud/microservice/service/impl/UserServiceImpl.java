@@ -9,6 +9,9 @@ import com.matrix.cloud.microservice.service.UserService;
 public class UserServiceImpl implements UserService
 {
 
+    /* (non-Javadoc)
+     * @see com.matrix.cloud.microservice.service.UserService#getUser(java.lang.Long)
+     */
     @Override
     public User getUser( Long id )
     {

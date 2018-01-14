@@ -6,30 +6,39 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
+/**   
+* @Description: TODO(这里用一句话描述这个类的作用)  
+* 
+* @author matrix 
+* @date 2018年1月14日  下午4:11:37
+*
+* @Copyright: 2018 www.matrix.com Inc. All rights reserved. 
+*/  
 public class StringUtil
 {
 
-    public static final String EMPTY = "";
+    private static final int CHAR_NUMBER = 0x01;
 
-    public static final int CHAR_NUMBER = 0x01;
+    private static final int CHAR_UPPERCASE_LITTER = 0x02;
 
-    public static final int CHAR_UPPERCASE_LITTER = 0x02;
+    private static final int CHAR_LOWERCASE_LITTER = 0x04;
 
-    public static final int CHAR_LOWERCASE_LITTER = 0x04;
+    private static final int CHAR_SIGN = 0x08;
 
-    public static final int CHAR_SIGN = 0x08;
+    private static final int CHAR_SPACE = 0x10;
 
-    public static final int CHAR_SPACE = 0x10;
-
-    public static final int CHAR_CONTROL = 0x20;
+    private static final int CHAR_CONTROL = 0x20;
+    
+    private static final Pattern P_TAB_ENTER = Pattern.compile( "\t|\r|\n" );
+    
+    private static final Pattern P_ENTER = Pattern.compile( "\r|\n" );
 
     public static String replaceBlank( String str )
     {
         String dest = "";
         if ( str != null )
         {
-            Pattern p = Pattern.compile( "\t|\r|\n" );
-            Matcher m = p.matcher( str.trim() );
+            Matcher m = P_TAB_ENTER.matcher( str.trim() );
             dest = m.replaceAll( "" );
         }
         return dest;
@@ -40,8 +49,7 @@ public class StringUtil
         String dest = "";
         if ( str != null )
         {
-            Pattern p = Pattern.compile( "\r|\n" );
-            Matcher m = p.matcher( str );
+            Matcher m = P_ENTER.matcher( str );
             dest = m.replaceAll( "" );
         }
         return dest;

@@ -12,6 +12,9 @@ import com.matrix.cloud.microservice.entity.ConfigDemo;
 import com.matrix.cloud.microservice.entity.User;
 import com.matrix.cloud.microservice.repository.UserRepository;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping( "/user" )
 public class UserController
@@ -24,6 +27,8 @@ public class UserController
     @Autowired
     private ConfigDemo configDemo;
 
+    @ApiOperation( value = "获取用户信息", notes = "根据用户id，获取用户信息" )
+    @ApiImplicitParam( name = "id", value = "用户id", required = true, paramType = "path", dataType = "Long" )
     @GetMapping( value = "/{id}", produces = { "application/json; charset=UTF-8" } )
     public User findById( @PathVariable( "id" ) Long id )
     {
@@ -37,6 +42,7 @@ public class UserController
         return findOne;
     }
     
+    @ApiOperation( value = "获取配置信息", notes = "获取配置信息" )
     @GetMapping( value = "/getConfigDemo", produces = { "application/json; charset=UTF-8" } )
     public ConfigDemo getConfigDemo( )
     {

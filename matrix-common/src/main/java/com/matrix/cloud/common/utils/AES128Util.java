@@ -21,12 +21,19 @@ public class AES128Util
 
     private static final String AES_KEY = "4h6mxj85vdq57rd7";
 
-    // ECB模式只用密钥即可对数据进行加密解密，CBC模式需要添加一个参数iv
+    /**
+     * ECB模式只用密钥即可对数据进行加密解密，CBC模式需要添加一个参数iv
+     */
     public static final String CIPHER_ALGORITHM = "AES/CBC/PKCS5Padding";
 
     public static final String RANDOM_SCOPE = "0123456789abcdefghijklmnopqrstuvwxyz";
 
-    // 加密
+    /**
+     * 加密
+     * @param sSrc 明文
+     * @return 密文
+     * @throws Exception
+     */
     public static String encrypt( String sSrc ) throws Exception
     {
         byte[] raw = AES_KEY.getBytes( "UTF-8" );
@@ -46,6 +53,12 @@ public class AES128Util
         return Base64.encodeBase64URLSafeString( encrypted ) + ivStr;
     }
 
+    /**
+     * 解密
+     * @param sSrc 密文
+     * @return 明文
+     * @throws Exception
+     */
     public static String decrypt( String sSrc ) throws Exception
     {
         if ( StringUtils.isEmpty( sSrc ) || sSrc.length() <= AES_LENGTH )

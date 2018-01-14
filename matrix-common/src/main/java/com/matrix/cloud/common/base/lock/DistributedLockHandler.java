@@ -10,18 +10,27 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.util.StringUtils;
 
 /**
- * @author junqing.song
+ * @author matrix
  * 分布式锁：redis版
  */
 public class DistributedLockHandler
 {
     private static final Logger logger = LoggerFactory.getLogger( DistributedLockHandler.class );
 
-    private final static long LOCK_EXPIRE = 5 * 1000L;// 单个业务持有锁的时间5s，防止死锁
+    /**
+     * 单个业务持有锁的时间5s，防止死锁
+     */
+    private final static long LOCK_EXPIRE = 5 * 1000L; 
 
-    private final static long LOCK_TRY_INTERVAL = 30L;// 默认30ms尝试一次
+    /**
+     * 默认30ms尝试一次
+     */
+    private final static long LOCK_TRY_INTERVAL = 30L;
 
-    private final static long LOCK_TRY_TIMEOUT = 10 * 1000L;// 默认尝试10s
+    /**
+     * 默认尝试10s
+     */
+    private final static long LOCK_TRY_TIMEOUT = 10 * 1000L; 
 
     @Autowired
     private StringRedisTemplate template;
