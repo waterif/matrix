@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.alibaba.fastjson.JSON;
+import com.matrix.cloud.common.base.ResponseEntity;
 import com.matrix.cloud.microservice.entity.User;
 
 @RunWith( SpringRunner.class )
@@ -46,11 +47,11 @@ public class UserServiceTest
     @Test
     public void testGetUser()
     {
-        User user = userService.getUser( 1L );
+        ResponseEntity<User> user = userService.getUser( 1L );
 
         System.out.println( JSON.toJSONString( user ) );
 
-        assertEquals( "account1", user.getName() );
+        assertEquals( "account1", user.getRetObj().getName() );
     }
 
 }
