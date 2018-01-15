@@ -1,0 +1,32 @@
+server:
+  port: 9999
+#  context-path: /api
+spring:
+  application:
+    name: microservice-security
+  profiles:
+    active:
+    - dev
+    
+  zipkin:
+    enabled: true
+    flush-interval: 1
+    compression:
+      enabled: true
+    base-url: http://localhost:9992   #http://microservice-zipkin-dashboard/
+    service:
+      name: ${spring.application.name}
+  sleuth:
+    enabled: true
+    async:
+      enabled: true
+    sampler:
+      percentage: 1 #  默认值为0.1f，现在为了测试设置100%采集
+      
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
