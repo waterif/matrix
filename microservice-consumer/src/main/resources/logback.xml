@@ -2,10 +2,16 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 	<!-- 优先级：root<append<loger -->
 	
-	<contextName>microservice-consumer</contextName>
+	<property name="APP_Name" value="microservice-consumer" />   
+	
+	<contextName>${APP_Name}</contextName>
 
 	<!-- 日志文件大小 -->
 	<property name="log.max.size" value="100MB" />
+	
+	<property name="log_file_name" value="${APP_Name}" />   
+	
+	<property name="log_file_path" value="/var/log/matrix" />   
 
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
@@ -14,9 +20,9 @@
 	</appender>
 
 	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/var/log/matrix/matrix.log</file>
+		<file>${log_file_path}/${log_file_name}.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>/var/log/matrix/matrix.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+			<fileNamePattern>${log_file_path}/${log_file_name}.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
 			<maxFileSize>${log.max.size}</maxFileSize>
 			<!--日志文件保留天数-->
             <MaxHistory>30</MaxHistory>
@@ -43,9 +49,9 @@
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY</onMismatch>
 		</filter>
-		<file>/var/log/matrix/matrix_error.log</file>
+		<file>${log_file_path}/${log_file_name}_error.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>/var/log/matrix/matrix_error.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+			<fileNamePattern>${log_file_path}/${log_file_name}_error.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
 			<maxFileSize>${log.max.size}</maxFileSize>
 			<!--日志文件保留天数-->
             <MaxHistory>90</MaxHistory>

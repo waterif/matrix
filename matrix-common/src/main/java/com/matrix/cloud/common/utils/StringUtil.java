@@ -6,14 +6,14 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
-/**   
-* @Description: TODO(这里用一句话描述这个类的作用)  
-* 
-* @author matrix 
-* @date 2018年1月14日  下午4:11:37
-*
-* @Copyright: 2018 www.matrix.com Inc. All rights reserved. 
-*/  
+/**
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * 
+ * @author matrix
+ * @date 2018年1月14日 下午4:11:37
+ *
+ * @Copyright: 2018 www.matrix.com Inc. All rights reserved.
+ */
 public class StringUtil
 {
 
@@ -28,9 +28,9 @@ public class StringUtil
     private static final int CHAR_SPACE = 0x10;
 
     private static final int CHAR_CONTROL = 0x20;
-    
+
     private static final Pattern P_TAB_ENTER = Pattern.compile( "\t|\r|\n" );
-    
+
     private static final Pattern P_ENTER = Pattern.compile( "\r|\n" );
 
     public static String replaceBlank( String str )

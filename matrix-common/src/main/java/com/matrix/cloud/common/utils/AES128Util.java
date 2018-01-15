@@ -30,6 +30,7 @@ public class AES128Util
 
     /**
      * 加密
+     * 
      * @param sSrc 明文
      * @return 密文
      * @throws Exception
@@ -55,6 +56,7 @@ public class AES128Util
 
     /**
      * 解密
+     * 
      * @param sSrc 密文
      * @return 明文
      * @throws Exception

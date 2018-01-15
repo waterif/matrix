@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+	<!-- 优先级：root<append<loger -->
+	
+	<property name="APP_Name" value="microservice-provider-kafka" />   
+	
+	<contextName>${APP_Name}</contextName>
+
+	<!-- 日志文件大小 -->
+	<property name="log.max.size" value="100MB" />
+	
+	<property name="log_file_name" value="${APP_Name}" />   
+	
+	<property name="log_file_path" value="/var/log/matrix" />   
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%X{req.requestId}] [%thread] [%-5level] [%logger{36}] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log_file_path}/${log_file_name}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${log_file_path}/${log_file_name}.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+			<maxFileSize>${log.max.size}</maxFileSize>
+			<!--日志文件保留天数-->
+            <MaxHistory>30</MaxHistory>
+			<!-- 当天的日志大小 超过${log.max.size}时,压缩日志并保存 -->
+			<timeBasedFileNamingAndTriggeringPolicy	class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>${log.max.size}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%contextName] [%X{req.requestId}] [%thread] [%-5level] [%logger{36}] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
+		<syslogHost>localhost</syslogHost>
+		<facility>local6</facility>
+		<suffixPattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%contextName] [%X{req.requestId}] [%thread] [%-5level] [%logger{36}] - %msg%n</suffixPattern>
+	</appender>
+
+	<!-- 记录error日志 -->
+	<appender name="all_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<file>${log_file_path}/${log_file_name}_error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${log_file_path}/${log_file_name}_error.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+			<maxFileSize>${log.max.size}</maxFileSize>
+			<!--日志文件保留天数-->
+            <MaxHistory>90</MaxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy	class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>${log.max.size}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%contextName] [%X{req.requestId}] [%thread] [%-5level] [%logger{36}] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<!-- spring -->
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="org.thymeleaf" level="ERROR" />
+	<!-- mybatis -->
+	<logger name="org.apache.ibatis" level="ERROR" />
+	<logger name="org.mybatis" level="ERROR" />
+	<logger name="java.sql.Connection" level="ERROR" />
+	<logger name="java.sql.Statement" level="ERROR" />
+	<logger name="java.sql.PreparedStatement" level="ERROR" />
+	<logger name="java.sql.ResultSet" level="ERROR" />
+	<logger name="com.alibaba.druid.sql" level="ERROR" />
+
+	<!--测试环境 -->
+	<springProfile name="dev,test">
+		<logger name="com.matrix" level="debug" />
+	</springProfile> 
+	
+	<!-- 生产环境. -->
+	<springProfile name="prod">
+		<logger name="com.matrix" level="info" />
+	</springProfile>
+
+	<!-- project default level 
+	<logger name="com.matrix" level="info" /> -->
+	
+	<root level="INFO">
+		<appender-ref ref="console" level="INFO" />
+		<appender-ref ref="rollingFile" level="INFO" />
+		<appender-ref ref="SYSLOG" level="INFO" />
+		<appender-ref ref="all_error" level="ERROR" />
+	</root>
+
+</configuration>

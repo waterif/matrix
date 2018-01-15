@@ -17,6 +17,11 @@ public class ResponseEntity<T>
     private String requestId;
 
     private T retObj;
+    
+    public ResponseEntity()
+    {
+        
+    }
 
     public ResponseEntity( int retCode )
     {
