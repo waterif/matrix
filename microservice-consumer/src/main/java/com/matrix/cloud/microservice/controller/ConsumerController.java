@@ -15,6 +15,14 @@ import com.matrix.cloud.common.base.ResponseEntity;
 import com.matrix.cloud.microservice.entity.User;
 import com.matrix.cloud.microservice.service.UserService;
 
+/**   
+* @Description: TODO(这里用一句话描述这个类的作用)  
+* 
+* @author matrix 
+* @date 2018年1月15日  下午6:21:49
+*
+* @Copyright: 2018 www.matrix.com Inc. All rights reserved. 
+*/  
 @RestController
 @RequestMapping( "/user" )
 public class ConsumerController
