@@ -96,5 +96,4 @@
 		<appender-ref ref="SYSLOG" level="INFO" />
 		<appender-ref ref="all_error" level="ERROR" />
 	</root>
-
 </configuration>
