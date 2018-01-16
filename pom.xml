@@ -24,5 +24,6 @@
     <module>microservice-config</module>
     <module>microservice-zipkin-dashboard</module>
     <module>microservice-security</module>
+    <module>microservice-admin</module>
   </modules>
 </project>

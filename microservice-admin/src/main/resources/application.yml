@@ -1,0 +1,33 @@
+server:
+  port: 9998
+#  context-path: /admin
+spring:
+  application:
+    name: microservice-admin
+  boot:
+    admin:
+      discovery:
+        enabled: true
+      monitor:
+        period: 5000 # 更新应用信息的频率，单位毫秒
+        status-lifetime: 5000 # 被监控的应用信息的过期时间，单位毫秒
+      
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  security:
+    enabled: false #测试,不使用密码
+    
+      
+info:  
+  app:  
+    name: "@project.name@"  
+    description: "@project.description@"  
+    version: "@project.version@"  
+    spring-boot-version: "@project.parent.version@" 

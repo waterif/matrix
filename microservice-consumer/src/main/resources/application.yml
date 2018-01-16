@@ -42,3 +42,14 @@ endpoints:
   shutdown:
     enabled: true # 启用shutdown
     sensitive: false # 禁用密码验证
+
+management:  
+  security:  
+    enabled: false # spring-boot 1.5.2之后严格执行安全策略，所以需要配置这个为false ,否则很多点监控不到 
+    
+info:  
+  app:  
+    name: "@project.name@"  
+    description: "@project.description@"  
+    version: "@project.version@"  
+    spring-boot-version: "@project.parent.version@" 
