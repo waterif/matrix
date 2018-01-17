@@ -11,8 +11,8 @@ spring:
       monitor:
         period: 10000 # 更新应用信息的频率，单位毫秒
         status-lifetime: 10000 # 被监控的应用信息的过期时间，单位毫秒
-      routes:
-        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream,activiti
+#      routes:
+#        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream,activiti
 #        - env,metrics,trace,dump,jolokia,info,configprops,trace,activiti,logfile,refresh,flyway,liquibase
 #        - env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
 #        - env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,activiti
