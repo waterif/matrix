@@ -11,5 +11,8 @@ POST http://localhost:8888/decrypt
 
 http://localhost:8888/info
 http://localhost:8888/health
+http://localhost:8888/env
+http://localhost:8888/metrics
+http://localhost:8888/beans
 
 http://localhost:8888/microservice-provider/dev
