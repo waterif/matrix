@@ -25,7 +25,8 @@ spring:
       
   cloud:
     config:
-      fail-fast: true
+      enabled: true
+      fail-fast: false
       discovery:
         enabled: true
         service-id: microservice-config-server
