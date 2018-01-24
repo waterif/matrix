@@ -1,0 +1,64 @@
+server:
+  port: 8083
+#  context-path: /proguard
+spring:
+  application:
+    name: microservice-proguard
+  profiles:
+    active:
+    - dev
+    
+  zipkin:
+    enabled: true
+    flush-interval: 1
+    compression:
+      enabled: true
+    base-url: http://localhost:9992   #http://microservice-zipkin-dashboard/
+    service:
+      name: ${spring.application.name}
+  sleuth:
+    enabled: true
+    async:
+      enabled: true
+    sampler:
+      percentage: 1 #  默认值为0.1f，现在为了测试设置100%采集
+      
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:                           # 指定数据源
+    platform: h2                        # 指定数据源类型
+    schema: classpath:schema.sql        # 指定h2数据库的建表脚本
+    data: classpath:data.sql            # 指定h2数据库的数据脚本
+logging:                                # 配置日志级别，让hibernate打印出执行的SQL
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    prefer-ip-address: true
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+endpoints:
+  shutdown:
+    enabled: true # 启用shutdown
+    sensitive: false # 禁用密码验证
+
+management:  
+  security:  
+    enabled: false # spring-boot 1.5.2之后严格执行安全策略，所以需要配置这个为false ,否则很多点监控不到 
+    
+info:  
+  app:  
+    name: "@project.name@"  
+    description: "@project.description@"  
+    version: "@project.version@"  
+    spring-boot-version: "@project.parent.version@"

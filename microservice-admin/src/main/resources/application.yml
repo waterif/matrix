@@ -35,7 +35,11 @@ eureka:
 management:
   security:
     enabled: false #测试,不使用密码
-    
+
+debug: true  
+
+endpoints:
+  enabled: true  
       
 info:  
   app:  
