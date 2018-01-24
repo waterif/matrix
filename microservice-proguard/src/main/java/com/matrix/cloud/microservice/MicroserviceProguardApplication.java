@@ -10,11 +10,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 @ServletComponentScan( basePackages = { "com.matrix.cloud.common.filter" } )
-public class MicroserviceProviderApplication
+public class MicroserviceProguardApplication
 {
 
     public static void main( String[] args )
     {
-        SpringApplication.run( MicroserviceProviderApplication.class, args );
+        SpringApplication.run( MicroserviceProguardApplication.class, args );
     }
 }

@@ -6,7 +6,7 @@
 	<groupId>com.matrix.cloud</groupId>
 	<artifactId>microservice-proguard</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<description>microservice-proguard</description>
 
 	<parent>
@@ -124,6 +124,7 @@
 				</executions>
 			</plugin>
 
+			<!-- 混淆插件 -->
 			<plugin>
 				<groupId>com.github.wvengen</groupId>
 				<artifactId>proguard-maven-plugin</artifactId>
