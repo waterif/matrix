@@ -25,6 +25,8 @@
     <module>microservice-zipkin-dashboard</module>
     <module>microservice-security</module>
     <module>microservice-admin</module>
+	<!--
     <module>microservice-proguard</module>
+	-->
   </modules>
 </project>
