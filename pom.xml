@@ -1,32 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  
-  <groupId>com.matrix.cloud</groupId>
-  <artifactId>microservice-parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.matrix.cloud</groupId>
+	<artifactId>microservice-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
 
-  <modules>
-    <module>matrix-common</module>
-    <module>microservice-discovery-eureka</module>
-    <module>microservice-provider</module>
-    <module>microservice-provider-rabbitmq</module>
-    <module>microservice-provider-kafka</module>
-    <module>microservice-consumer</module>
-    <module>microservice-consumer-rabbitmq</module>
-    <module>microservice-consumer-kafka</module>
-    <module>microservice-gateway</module>
-    <module>microservice-hystrix-dashboard</module>
-    <module>microservice-turbine</module>
-    <module>microservice-config</module>
-    <module>microservice-zipkin-dashboard</module>
-    <module>microservice-security</module>
-    <module>microservice-admin</module>
-	<!--
-    <module>microservice-proguard</module>
+	<modules>
+		<module>matrix-common</module>
+		<module>microservice-discovery-eureka</module>
+		<module>microservice-provider</module>
+		<module>microservice-provider-rabbitmq</module>
+		<module>microservice-provider-kafka</module>
+		<module>microservice-consumer</module>
+		<module>microservice-consumer-rabbitmq</module>
+		<module>microservice-consumer-kafka</module>
+		<module>microservice-gateway</module>
+		<module>microservice-hystrix-dashboard</module>
+		<module>microservice-turbine</module>
+		<module>microservice-config</module>
+		<module>microservice-zipkin-dashboard</module>
+		<module>microservice-security</module>
+		<module>microservice-admin</module>
+		<!-- <module>microservice-proguard</module> -->
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.4</version>
+				<configuration>
+					<!-- <configLocation>${basedir}/springside-findbugs.xml</configLocation> -->
+					<threshold>High</threshold>
+					<effort>Default</effort>
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<!-- findbugs xml输出路径 -->
+					<findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<linkXRef>false</linkXRef>
+					<failsOnError>true</failsOnError>
+					<consoleOutput>true</consoleOutput>
+					<configLocation>checkstyle.xml</configLocation>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.7</version>
+				<configuration>
+					<linkXref>false</linkXref>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+
+<!--
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>3.0.4</version>
+				<configuration>
+					<xmlOutput>true</xmlOutput>
+					<findbugsXmlOutput>true</findbugsXmlOutput>
+					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<linkXRef>false</linkXRef>
+					<failsOnError>true</failsOnError>
+					<consoleOutput>true</consoleOutput>
+					<configLocation>checkstyle.xml</configLocation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.7</version>
+				<configuration>
+					<linkXref>false</linkXref>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 	-->
-  </modules>
 </project>
