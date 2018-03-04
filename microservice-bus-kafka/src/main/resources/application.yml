@@ -1,28 +1,26 @@
 server:
   port: 8081
-#  context-path: /provider-kafka
+#  context-path: /bus-kafka
 spring:
   application:
-    name: microservice-provider-kafka
+    name: microservice-bus-kafka
   cloud:
     stream:
-      kafka: 
-        binder: 
-          autoAddPartitions: true
-      default-binder: binderMatrix
+      default-binder: kafka
       bindings:
-        channelOutput:
-          binder: binderMatrix
-          destination: matrix-topic
-          content-type: text/plain  #application/json
+        kafka:
+          binder: kafka
           producer:
+#            partitionKeyExpression: payload.id
             partition-count: 1
+          destination: dest1
+          content-type: text/plain
       binders:
-        binderMatrix: 
+        matrix: 
           type: kafka
           environment:
-            spring.cloud.stream.kafka.binder.brokers: 192.168.182.129:9092
-            spring.cloud.stream.kafka.binder.zk-nodes: 192.168.182.129:2181,192.168.182.129:2182,192.168.182.129:2183
+            spring.cloud.stream.kafka.binder.brokers: 192.168.35.153:5672
+            spring.cloud.stream.kafka.binder.zk-nodes: 192.168.35.153:2181
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}

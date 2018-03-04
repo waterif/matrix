@@ -1,28 +1,26 @@
 server:
-  port: 8080
+  port: 8092
 #  context-path: /consumer-kafka
 spring:
   application:
     name: microservice-consumer-kafka
   cloud:
     stream:
-      default-binder: matrix
+      default-binder: binderMatrix
       bindings:
-        matrix:
-          binder: matrix
-          destination: dest1
-          group: group1
+        channelInput:
+          binder: binderMatrix
+          destination: matrix-topic
+          group: matrix-group
           consumer:
-            instance-count: 1
-            partitioned: true
-            concurrency: 0
-          content-type: text/plain
+            concurrency: 1
+            partitioned: false
       binders:
-        matrix: 
+        binderMatrix: 
           type: kafka
           environment:
-            spring.cloud.stream.kafka.binder.brokers: 192.168.35.153:5672
-            spring.cloud.stream.kafka.binder.zk-nodes: 192.168.35.153:2181
+            spring.cloud.stream.kafka.binder.brokers: 192.168.182.129:9092
+            spring.cloud.stream.kafka.binder.zk-nodes: 192.168.182.129:2181,192.168.182.129:2182,192.168.182.129:2183
 eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
